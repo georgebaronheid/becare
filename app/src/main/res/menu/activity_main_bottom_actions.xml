@@ -7,7 +7,7 @@
             android:title="placeholder1"
             android:icon="@drawable/ic_outline_home"/>
         <item
-            android:id="@+id/nav_menu_chat"
+            android:id="@+id/nav_menu_hospital"
             android:checked="true"
             android:title="placeholder2"
             android:icon="@drawable/ic_outline_local_hospital_24"/>

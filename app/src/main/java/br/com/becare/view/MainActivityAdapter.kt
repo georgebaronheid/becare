@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class MainActivityAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     private val fragmentList = listOf(
-        CardsFragment(), HomeFragment()
+        HomeFragment(), CardsFragment()
     )
 
     override fun getItemCount(): Int {
