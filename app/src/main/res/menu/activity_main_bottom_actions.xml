@@ -4,15 +4,18 @@
         <item
             android:id="@+id/nav_menu_home"
             android:checked="true"
-            android:title="placeholder1" />
+            android:title="placeholder1"
+            android:icon="@drawable/ic_outline_home"/>
         <item
-            android:id="@+id/nav_search"
+            android:id="@+id/nav_menu_chat"
             android:checked="true"
-            android:title="placeholder2" />
-<!--        <item-->
-<!--            android:id="@+id/nav_menu_master"-->
-<!--            android:checked="true"-->
-<!--            android:title="placeholder3" />-->
+            android:title="placeholder2"
+            android:icon="@drawable/ic_outline_local_hospital_24"/>
+        <item
+            android:id="@+id/nav_menu_settings"
+            android:checked="true"
+            android:title="placeholder3"
+            android:icon="@drawable/ic_outline_settings_24"/>
 <!--        <item-->
 <!--            android:id="@+id/nav_menu_detail"-->
 <!--            android:checked="true"-->

@@ -22,6 +22,7 @@
         android:background="#F6CFC3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:menu="@menu/activity_main_bottom_actions" />
+        app:menu="@menu/activity_main_bottom_actions"
+        app:labelVisibilityMode="unlabeled"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
