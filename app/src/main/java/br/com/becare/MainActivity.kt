@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.becare.databinding.ActivityMainBinding
 import br.com.becare.view.LandingFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,11 +14,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        supportFragmentManager.beginTransaction()
+            .add(binding.fragmentContainerView.id, LandingFragment())
+            .commit()
+
         this.supportActionBar!!.hide()
 
-
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.activity_main_constraint, LandingFragment())
     }
 }
