@@ -1,6 +1,9 @@
 package br.com.becare.entities
 
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
 data class MedicalEntity(
     val hospital: Hospital,
-    val distancia: Float
-)
+    @SerializedName("id") val distancia: Float
+) : Serializable
