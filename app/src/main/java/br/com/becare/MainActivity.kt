@@ -3,12 +3,10 @@ package br.com.becare
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.becare.databinding.ActivityMainBinding
 import br.com.becare.entities.Hospital
-import br.com.becare.entities.MedicalEntity
 import br.com.becare.service.RetrofitFactory
 import br.com.becare.view.DetailsActivity
 import retrofit2.Call
@@ -30,10 +28,7 @@ class MainActivity : AppCompatActivity() {
         this.supportActionBar!!.hide()
 
         retrofitTest()
-        detailtIntent = Intent(this, DetailsActivity::class.java).apply {
-            putExtra("HospitalEntity", hospital)
-        }
-        startActivity(detailtIntent)
+
     }
 
     private fun retrofitTest() {
@@ -53,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, it[0].toString(), Toast.LENGTH_LONG).show()
                 } ?: Toast.makeText(this@MainActivity, "Hospital não localizado", Toast.LENGTH_LONG)
                     .show()
+                detailtIntent = Intent(this@MainActivity, DetailsActivity::class.java).apply {
+                    putExtra("HospitalEntity", hospital)
+                }
+                startActivity(detailtIntent)
             }
 
             override fun onFailure(call: Call<Array<Hospital>>, t: Throwable) {
