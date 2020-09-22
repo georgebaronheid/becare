@@ -2,13 +2,13 @@ package br.com.becare.view
 
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import br.com.becare.R
 import br.com.becare.databinding.ActivityDetailsBinding
 import br.com.becare.entities.Hospital
@@ -20,28 +20,19 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var map: GoogleMap
-    private lateinit var hospitalObject: Hospital
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         this.supportActionBar!!.hide()
 
-        hospitalObject = intent.getSerializableExtra("HospitalEntity") as Hospital
-
-        with(hospitalObject) {
-            title_card.text = nome
-            address.text = logradouro
-        }
-
-        val mapFragment =
-            supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
         mapFragment.getMapAsync(this)
     }
@@ -50,7 +41,7 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         Log.d("GDP", "OnMapReady")
         map = p0
 
-        Log.i("DetailsActivity", hospitalObject.toString())
+        val hospitalObject = intent.getSerializableExtra("HospitalEntity") as Hospital
 
         val location = LatLng(hospitalObject.latitude, hospitalObject.longitude)
         map.addMarker(

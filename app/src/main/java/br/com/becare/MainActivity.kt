@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         this.supportActionBar!!.hide()
 
         retrofitTest()
-
     }
 
     private fun retrofitTest() {
@@ -45,13 +44,13 @@ class MainActivity : AppCompatActivity() {
                 response.body()?.let {
                     Log.i("Match for $keyword", it[0].toString())
                     hospital = it[0]
+                    detailtIntent = Intent(this@MainActivity, DetailsActivity::class.java).apply {
+                        putExtra("HospitalEntity", hospital)
+                    }
+                    startActivity(detailtIntent)
                     Toast.makeText(this@MainActivity, it[0].toString(), Toast.LENGTH_LONG).show()
                 } ?: Toast.makeText(this@MainActivity, "Hospital não localizado", Toast.LENGTH_LONG)
                     .show()
-                detailtIntent = Intent(this@MainActivity, DetailsActivity::class.java).apply {
-                    putExtra("HospitalEntity", hospital)
-                }
-                startActivity(detailtIntent)
             }
 
             override fun onFailure(call: Call<Array<Hospital>>, t: Throwable) {
