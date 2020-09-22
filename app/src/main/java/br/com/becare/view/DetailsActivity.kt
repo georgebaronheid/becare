@@ -8,6 +8,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.becare.R
 import br.com.becare.databinding.ActivityDetailsBinding
@@ -35,6 +36,9 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
         mapFragment.getMapAsync(this)
+
+        Toast.makeText(this, "Selecione a marcação para acessar rota", Toast.LENGTH_LONG).show()
+
     }
 
     override fun onMapReady(p0: GoogleMap) {
@@ -43,15 +47,20 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val hospitalObject = intent.getSerializableExtra("HospitalEntity") as Hospital
 
+        with(hospitalObject) {
+            binding.titleCard.text = nome
+            binding.address.text = logradouro
+            binding.textView2.text = "Selecione a marcação para acessar rota"
+        }
+
         val location = LatLng(hospitalObject.latitude, hospitalObject.longitude)
         map.addMarker(
             MarkerOptions()
                 .position(location)
                 .title(hospitalObject.nome)
                 .snippet(hospitalObject.logradouro)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-        )
-
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+        ).showInfoWindow()
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 12.5F))
 
         map.setInfoWindowAdapter(object : GoogleMap.InfoWindowAdapter {
@@ -83,6 +92,7 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
         })
+
     }
 
 }

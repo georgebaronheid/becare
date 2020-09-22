@@ -9,20 +9,12 @@
     <include
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
         layout="@layout/map_fragment"/>
-
-<!--    <com.google.android.gms.maps.MapView-->
-<!--        android:id="@+id/detail_activity_map_view"-->
-<!--        android:name="com.google.android.gms.maps.SupportMapFragment"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/guideline"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -72,7 +64,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/address"
         app:srcCompat="@drawable/ic_pin" />
 
     <TextView
@@ -85,6 +77,6 @@
         android:textAllCaps="false"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/address"
         tools:text="X km" />
 </androidx.constraintlayout.widget.ConstraintLayout>
