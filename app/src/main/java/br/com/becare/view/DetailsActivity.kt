@@ -49,6 +49,8 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             binding.titleCard.text = nome
             binding.address.text = logradouro
             binding.hintTextView.text = "Selecione a marcação para acessar rota"
+            binding.phonenumber.text = telefone
+            binding.expectedTime.text = fila
         }
         binding.backArrow.setOnClickListener{
             finish()

@@ -8,13 +8,53 @@
 
     <include
         android:id="@+id/container"
+        layout="@layout/map_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintHeight_percent="0.58"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/map_fragment"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:layout_marginBottom="46dp"
+        app:cardCornerRadius="16dp"
+        android:background="#E41F36"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/time_title"
+                android:background="#E41F36"
+                android:textColor="#FFFFFF"
+                android:paddingStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Fila - "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/expected_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#E41F36"
+                android:textColor="#FFFFFF"
+                android:paddingEnd="8dp"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/time_title"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="0:00h" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -60,21 +100,19 @@
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address"
-        app:srcCompat="@drawable/ic_pin" />
+        app:srcCompat="@drawable/ic_pin"
+        tools:layout_editor_absoluteY="604dp" />
 
     <TextView
         android:id="@+id/hint_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/pin_image_view"
-        app:layout_constraintTop_toBottomOf="@+id/address"
+        tools:layout_editor_absoluteY="604dp"
         tools:text="X km" />
 
     <ImageView
@@ -87,5 +125,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/phonenumber_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        android:text="Telefone:" />
+
+    <TextView
+        android:id="@+id/phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        tools:text="(11) 93123-4444"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/phonenumber_title"
+        app:layout_constraintStart_toEndOf="@+id/phonenumber_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
