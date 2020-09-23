@@ -36,6 +36,7 @@ android {
 
 dependencies {
     implementation 'com.google.android.gms:play-services:12.0.1'
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
 
     implementation 'com.android.support:multidex:1.0.3'
 

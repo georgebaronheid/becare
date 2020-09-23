@@ -48,17 +48,15 @@
         app:layout_constraintTop_toBottomOf="@+id/title_card"
         tools:text="Address placeholder" />
 
-
-
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/center_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/pin_image_view"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginStart="16dp"
@@ -68,15 +66,26 @@
         app:srcCompat="@drawable/ic_pin" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/hint_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
         android:textAllCaps="false"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/pin_image_view"
         app:layout_constraintTop_toBottomOf="@+id/address"
         tools:text="X km" />
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

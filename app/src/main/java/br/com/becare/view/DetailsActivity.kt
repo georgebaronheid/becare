@@ -8,7 +8,6 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.becare.R
 import br.com.becare.databinding.ActivityDetailsBinding
@@ -26,6 +25,7 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var map: GoogleMap
+    private lateinit var hospitalObject: Hospital
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,25 +33,34 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
         this.supportActionBar!!.hide()
 
+        setMap()
+        activitySettings()
+
+    }
+
+    private fun setMap() {
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-
         mapFragment.getMapAsync(this)
+    }
 
-        Toast.makeText(this, "Selecione a marcação para acessar rota", Toast.LENGTH_LONG).show()
-
+    private fun activitySettings() {
+        hospitalObject = intent.getSerializableExtra("HospitalEntity") as Hospital
+        with(hospitalObject) {
+            binding.titleCard.text = nome
+            binding.address.text = logradouro
+            binding.hintTextView.text = "Selecione a marcação para acessar rota"
+        }
+        binding.backArrow.setOnClickListener{
+            finish()
+        }
     }
 
     override fun onMapReady(p0: GoogleMap) {
         Log.d("GDP", "OnMapReady")
         map = p0
 
-        val hospitalObject = intent.getSerializableExtra("HospitalEntity") as Hospital
 
-        with(hospitalObject) {
-            binding.titleCard.text = nome
-            binding.address.text = logradouro
-            binding.textView2.text = "Selecione a marcação para acessar rota"
-        }
+
 
         val location = LatLng(hospitalObject.latitude, hospitalObject.longitude)
         map.addMarker(

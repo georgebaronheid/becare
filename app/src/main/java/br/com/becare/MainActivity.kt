@@ -32,7 +32,11 @@ class MainActivity : AppCompatActivity() {
         this.supportActionBar!!.hide()
 
         setSearchView()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        binding.landingSearchView.clearFocus()
     }
 
 
