@@ -1,17 +1,19 @@
 package br.com.becare
 
-import android.app.SearchManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.becare.databinding.ActivityMainBinding
-import br.com.becare.entities.Hospital
+import br.com.becare.entities.dtos.Hospital
+import br.com.becare.entities.dtos.LandingCard
 import br.com.becare.service.RetrofitFactory
 import br.com.becare.view.DetailsActivity
+import br.com.becare.view.LandingRvAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,31 +33,44 @@ class MainActivity : AppCompatActivity() {
 
         this.supportActionBar!!.hide()
 
-        setSearchView()
+        recycler_services_cards.layoutManager =
+            LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+
+        val cardList = ArrayList<LandingCard>()
+
+        cardList.add( LandingCard("Hospitais", "Hospitais próximos", "@drawable/ic_logo_sus"))
+        cardList.add( LandingCard("Pronto Socorro", "Pronto socorros próximos",
+            "@drawable/ic_logo_sus"))
+        cardList.add( LandingCard("Dentista", "Dentistas próximos", "@drawable/ic_logo_sus"))
+
+        val rvAdapter = LandingRvAdapter(cardList)
+        recycler_services_cards.adapter = rvAdapter
+
+//        setSearchView()
     }
 
-    override fun onResume() {
-        super.onResume()
-        binding.landingSearchView.clearFocus()
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        binding.landingSearchView.clearFocus()
+//    }
 
 
-    private fun setSearchView() {
-        binding.landingSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.i("Search:", "$query")
-                keyword = query as String
-                binding.landingSearchView.clearFocus()
-                binding.landingSearchView.setQuery("", false)
-                keyword.apply { searchKeyword(keyword) }
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
-    }
+//    private fun setSearchView() {
+//        binding.landingSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                Log.i("Search:", "$query")
+//                keyword = query as String
+//                binding.landingSearchView.clearFocus()
+//                binding.landingSearchView.setQuery("", false)
+//                keyword.apply { searchKeyword(keyword) }
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                return false
+//            }
+//        })
+//    }
 
     private fun searchKeyword(keyword: String) {
 
