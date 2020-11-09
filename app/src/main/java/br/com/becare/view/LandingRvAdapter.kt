@@ -25,7 +25,6 @@ class LandingRvAdapter
             .inflate(R.layout.activity_main_card, parent, false)
         viewHolder.setOnClickListener { }
         return ViewHolder(viewHolder)
-        this.parentContext = parent.context
     }
 
     override fun getItemCount(): Int {
@@ -38,19 +37,14 @@ class LandingRvAdapter
         holder.image?.setBackgroundResource(R.drawable.ic_baseline_local_hospital_24)
 
 
-        holder.itemView.setOnClickListener(
-            object : View.OnClickListener {
-                override fun onClick(v: View?) {
-                    Toast.makeText(v?.context, "${holder.header?.text} clicked", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-        )
+        holder.itemView.setOnClickListener { v ->
+            Toast.makeText(v?.context, "${holder.header.text} clicked", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val card = itemView.findViewById<CardView>(R.id.main_card)
         val header = itemView.findViewById<TextView>(R.id.landing_card_header_text)
         val detail = itemView.findViewById<TextView>(R.id.landing_card_subtitle_text)
         val image = itemView.findViewById<ImageView>(R.id.landing_card_image)
