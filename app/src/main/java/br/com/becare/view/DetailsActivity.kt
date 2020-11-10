@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import br.com.becare.R
 import br.com.becare.databinding.ActivityDetailsBinding
-import br.com.becare.entities.Hospital
+import br.com.becare.entities.dtos.Hospital
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
