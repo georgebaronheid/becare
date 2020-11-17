@@ -10,4 +10,7 @@ interface HospitalService {
     @GET("{keyword}")
     fun getBySearchKeyword(@Path("keyword") keyword: String): Call<Array<Hospital>>
 
+    @GET(".")
+    fun getAllHospitals(): Call<Array<Hospital>>
+
 }
