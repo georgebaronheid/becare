@@ -11,7 +11,9 @@ data class Hospital(
     @SerializedName("cep") val cep: String,
     @SerializedName("sus") val sus: Boolean,
     @SerializedName("publico") val publico: Boolean,
-    @SerializedName("longitude") val longitude: Double,
-    @SerializedName("latitude") val latitude: Double,
-    @SerializedName("fila") val fila: String
+    @SerializedName("longitude") val longitude: String,
+    @SerializedName("latitude") val latitude: String,
+    @SerializedName("fila") val fila: String,
+    @SerializedName("ps") val ps: Boolean
 ) : Serializable
+

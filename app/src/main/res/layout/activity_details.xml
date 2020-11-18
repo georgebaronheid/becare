@@ -16,46 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginBottom="46dp"
-        app:cardCornerRadius="16dp"
-        android:background="#E41F36"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/time_title"
-                android:background="#E41F36"
-                android:textColor="#FFFFFF"
-                android:paddingStart="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:text="Fila - "
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                android:id="@+id/expected_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#E41F36"
-                android:textColor="#FFFFFF"
-                android:paddingEnd="8dp"
-                android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/time_title"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="0:00h" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -70,9 +30,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="#000000"
         android:textSize="27sp"
-        android:textStyle="bold"
+        android:ellipsize="end"
+        android:maxLines="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         tools:text="Name Placeholder" />
@@ -103,7 +63,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phonenumber_title"
-        app:srcCompat="@drawable/ic_pin" />
+        app:srcCompat="@drawable/ic_pin"
+        />
 
     <TextView
         android:id="@+id/hint_text_view"
@@ -119,8 +80,8 @@
 
     <ImageView
         android:id="@+id/back_arrow"
-        android:layout_width="39dp"
-        android:layout_height="39dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
