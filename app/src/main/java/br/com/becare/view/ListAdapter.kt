@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import br.com.becare.R
@@ -19,23 +20,20 @@ class ListAdapter(
     val dataSet: Array<Hospital>
 ) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View, dataSet: List<Hospital> = emptyList()) :
+
+    class ViewHolder(
+        view: View
+    ) :
         RecyclerView.ViewHolder(view) {
+        val rootCard = view.findViewById<CardView>(R.id.root_card)
         val headerListCard = view.findViewById<TextView>(R.id.header_list_card)
         val subtitleListCard = view.findViewById<TextView>(R.id.subtitle_list_card)
-        val distanceTextView = view.findViewById<TextView>(R.id.distance_text_view)
-        val averageTime = view.findViewById<TextView>(R.id.average_time_text)
-        val colorHolder: ConstraintLayout =
-            view.findViewById<ConstraintLayout>(R.id.time_constraint_holder)
 
-        init {
-            view.setOnClickListener {
-                Intent(it.context, DetailsActivity::class.java).apply {
-                    putExtra("HospitalEntity", dataSet[layoutPosition])
-                    it.context.startActivity(this)
-                }
-            }
-        }
+        //        val distanceTextView = view.findViewById<TextView>(R.id.distance_text_view)
+        val averageTime = view.findViewById<TextView>(R.id.average_time_text)
+        val colorHolder: View =
+            view.findViewById(R.id.time_constraint_holder)
+
 
     }
 
@@ -53,6 +51,12 @@ class ListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //    Get element from a dataset at this positino and repĺace its contents with the same
 //    position of the dataSet list
+        holder.rootCard.setOnClickListener {
+            Intent(it.context, DetailsActivity::class.java).apply {
+                putExtra("HospitalEntity", dataSet[holder.layoutPosition])
+                it.context.startActivity(this)
+            }
+        }
         holder.headerListCard?.text = dataSet[position].nome
         holder.subtitleListCard?.text = dataSet[position].logradouro
         holder.averageTime?.text = LocalTime.MIN.plus(
@@ -70,8 +74,8 @@ class ListAdapter(
             )
         )
 
-}
+    }
 
-override fun getItemCount(): Int = dataSet.count()
+    override fun getItemCount(): Int = dataSet.count()
 
 }

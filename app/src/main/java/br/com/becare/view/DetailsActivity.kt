@@ -2,12 +2,14 @@ package br.com.becare.view
 
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import br.com.becare.R
 import br.com.becare.databinding.ActivityDetailsBinding
@@ -20,6 +22,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import java.time.Duration
+import java.time.LocalTime
 
 class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -31,7 +35,6 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        this.supportActionBar!!.hide()
 
         setMap()
         activitySettings()
@@ -50,7 +53,6 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             binding.address.text = logradouro
             binding.hintTextView.text = "Selecione a marcação para acessar rota"
             binding.phonenumber.text = telefone
-            binding.expectedTime.text = fila
         }
         binding.backArrow.setOnClickListener{
             finish()
@@ -61,10 +63,7 @@ class DetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         Log.d("GDP", "OnMapReady")
         map = p0
 
-
-
-
-        val location = LatLng(hospitalObject.latitude, hospitalObject.longitude)
+        val location = LatLng(hospitalObject.latitude.toDouble(), hospitalObject.longitude.toDouble())
         map.addMarker(
             MarkerOptions()
                 .position(location)
