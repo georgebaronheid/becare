@@ -1,7 +1,7 @@
 # becare
 
-Aplicativo Android que permite ao usuário verificar o tempo de espera
-para os hospitais desajados.
+Aplicativo Android que permite ao usuário verificar o tempo de espera para atendimento
+nos hospitais desejados.
 
 
 
